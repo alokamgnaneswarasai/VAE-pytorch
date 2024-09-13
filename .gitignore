@@ -1,5 +1,4 @@
 # Ignore pycache and datafolder , vae.pth
 __pycache__
 datafolder
-vae.pth
-vae1.pth
+*.pth

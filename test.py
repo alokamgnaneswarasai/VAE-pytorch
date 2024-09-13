@@ -7,7 +7,7 @@ from dataloader import get_celeba_loader
 def show_images(images,title):
     
     images = images.detach().cpu().numpy().transpose(0,2,3,1)
-    images = (images+1)/2
+    # images = (images+1)/2
     
     fig,ax = plt.subplots(1,len(images),figsize=(20,20))
     for i in range(len(images)):
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     
     dataloader = get_celeba_loader(batch_size,img_size,data_dir)
     model = VAE(z_dim,img_size).to(device)
-    model.load_state_dict(torch.load('vae1.pth',weights_only=True))
+    model.load_state_dict(torch.load('vae2.pth',weights_only=True))
     
     test_vae(model,dataloader,device)
         

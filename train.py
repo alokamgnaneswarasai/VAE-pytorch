@@ -40,4 +40,4 @@ if __name__ == '__main__':
     train_vae(epochs,dataloader,model,optimizer,device)
     
     # save model
-    torch.save(model.state_dict(),'vae1.pth')
+    torch.save(model.state_dict(),'vae2.pth')
