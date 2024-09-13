@@ -16,16 +16,22 @@ def train_vae(epochs,dataloader,model,optimizer,device):
             loss.backward()
             total_loss += loss.item()
             optimizer.step()
+            
+            if i%50 == 0:
+                print('Epoch: {} Batch: {} Loss: {}'.format(epoch,i,total_loss/(i+1)))
+                
+                
+                
         
-        print(f'Epoch: {epoch+1}, Loss: {total_loss/len(dataloader)}')
+       
         
 if __name__ == '__main__':
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
     batch_size = 4096
     img_size = 64
     z_dim = 128
     data_dir = 'datafolder/img_align_celeba'
-    epochs = 10
+    epochs = 20
     
     print('Data loading...')
     dataloader = get_celeba_loader(batch_size,img_size,data_dir)
