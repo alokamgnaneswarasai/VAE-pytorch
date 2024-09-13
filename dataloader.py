@@ -23,9 +23,11 @@ class CelebADataset(datasets.VisionDataset):
     
 def get_celeba_loader(batch_size,img_size,data_dir):
     transform = transforms.Compose([
-        transforms.Resize((img_size,img_size)),
+        # transforms.Resize((img_size,img_size)),
+        transforms.Resize(img_size),
+        transforms.CenterCrop(img_size),
         transforms.ToTensor(),
-        transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
+        # transforms.Normalize((0.5,0.5,0.5),(0.5,0.5,0.5))
     ])
     dataset = CelebADataset(data_dir,transform=transform)
     dataloader = DataLoader(dataset,batch_size=batch_size,shuffle=True)

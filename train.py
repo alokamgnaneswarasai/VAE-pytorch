@@ -17,8 +17,7 @@ def train_vae(epochs,dataloader,model,optimizer,device):
             total_loss += loss.item()
             optimizer.step()
             
-            if i%50 == 0:
-                print('Epoch: {} Batch: {} Loss: {}'.format(epoch,i,total_loss/(i+1)))
+        print('Epoch: {}, Loss: {}'.format(epoch+1,total_loss/len(dataloader)))
                 
                 
                 
@@ -26,7 +25,7 @@ def train_vae(epochs,dataloader,model,optimizer,device):
        
         
 if __name__ == '__main__':
-    device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     batch_size = 4096
     img_size = 64
     z_dim = 128
@@ -41,4 +40,4 @@ if __name__ == '__main__':
     train_vae(epochs,dataloader,model,optimizer,device)
     
     # save model
-    torch.save(model.state_dict(),'vae.pth')
+    torch.save(model.state_dict(),'vae1.pth')
