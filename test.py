@@ -45,7 +45,7 @@ if __name__ == '__main__':
     
     dataloader = get_celeba_loader(batch_size,img_size,data_dir)
     model = VAE(z_dim,img_size).to(device)
-    model.load_state_dict(torch.load('vae.pth',weights_only=True))
+    model.load_state_dict(torch.load('vae1.pth',weights_only=True))
     
     test_vae(model,dataloader,device)
         
